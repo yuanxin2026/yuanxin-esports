@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>源心竞技 | Yuanxin Esports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .milestone-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .milestone-timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+            border-radius: 3px;
+        }
+        .milestone-timeline__item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+        .milestone-timeline__item::before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #4f46e5;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #4f46e5;
+            z-index: 1;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating-logo {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+    </head>
+    <body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- 添加自定义样式（可选但推荐） -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+     body { font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+     .player-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+     .section-title { position: relative; display: inline-block; }
+     .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 50%; height: 4px; background: #ef4444; border-radius: 2px; }
+    </style>
+    
+    <!-- 导航栏 -->
+    <nav class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="floating-logo">
+                    <i class="fas fa-gamepad text-3xl text-cyan-300"></i>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight">
+                    源心竞技 <span class="text-sm font-normal text-cyan-200">Yuanxin Esports</span>
+                </h1>
+            </div>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="hover:text-cyan-300 transition">品牌</a>
+                <a href="#teams" class="hover:text-cyan-300 transition">战队</a>
+                <a href="#players" class="hover:text-cyan-300 transition">选手</a>
+                <a href="#milestones" class="hover:text-cyan-300 transition">历程</a>
+                <a href="#join" class="hover:text-cyan-300 transition">加入</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menuBtn" class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="md:hidden bg-indigo-800 hidden">
+            <div class="flex flex-col space-y-4 p-4">
+                <a href="#about" class="hover:text-cyan-300 py-2">品牌</a>
+                <a href="#teams" class="hover:text-cyan-300 py-2">战队</a>
+                <a href="#players" class="hover:text-cyan-300 py-2">选手</a>
+                <a href="#milestones" class="hover:text-cyan-300 py-2">历程</a>
+                <a href="#join" class="hover:text-cyan-300 py-2">加入</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <header class="relative bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-800 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="container mx-auto px-4 py-20 md:py-28 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+                始于<span class="text-cyan-300">2023</span>，竞无止境
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                专注于《暗区突围》《和平精英》《王者荣耀》《三角洲行动》《CS:GO》《逃离塔克夫》六大核心竞技项目的职业电竞品牌。
+            </p>
+            <a href="#teams" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
+                探索我们的战队 <i class="fas fa-chevron-down ml-2"></i>
+            </a>
+        </div>
+        <!-- 装饰性粒子背景 -->
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </header>
+
+    <!-- 品牌介绍 -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                    <i class="fas fa-crown text-amber-500 mr-3"></i> 关于源心竞技
+                </h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    源心竞技（Yuanxin Esports）创立于2023年，是一个充满活力与雄心的职业电竞品牌。我们深耕多游戏领域，致力于构建一个从青训到职业的完整电竞生态体系，培养顶尖的电竞人才，并在各赛事中追求卓越。
+                </p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- 游戏项目 -->
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-crosshairs text-3xl text-red-500 mb-3"></i>
+                    <h4 class="font-bold">暗区突围</h4>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-parachute-box text-3xl text-green-500 mb-3"></i>
+                    <h4 class="font-bold">和平精英</h4>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-mobile-alt text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold">王者荣耀</h4>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-mask text-3xl text-orange-500 mb-3"></i>
+                    <h4 class="font-bold">三角洲行动</h4>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-gun text-3xl text-gray-700 mb-3"></i>
+                    <h4 class="font-bold">CS:GO</h4>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-5 text-center card-hover">
+                    <i class="fas fa-running text-3xl text-yellow-600 mb-3"></i>
+                    <h4 class="font-bold">逃离塔克夫</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 战队信息 -->
+    <section id="teams" class="py-16 bg-gradient-to-r from-slate-50 to-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                <i class="fas fa-users mr-3 text-indigo-600"></i> 核心战队
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 源心·黎明 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border-t-4 border-blue-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">源心·黎明</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-gamepad text-blue-400 mr-2"></i> 主攻游戏：<strong>《暗区突围》</strong>
+                        </p>
+                        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                                <i class="fas fa-trophy mr-2"></i> 最新荣誉
+                            </h4>
+                            <p class="text-blue-900">FPS暗区娱乐赛事 <span class="font-bold text-lg">前十名</span></p>
+                        </div>
+                        <p class="text-sm text-gray-500">专注于战术执行与团队协同的FPS强队。</p>
+                    </div>
+                </div>
+
+                <!-- 源心·急袭 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border-t-4 border-purple-500">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">源心·急袭</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-gamepad text-purple-400 mr-2"></i> 主攻游戏：<strong>《三角洲行动》</strong>
+                        </p>
+                        <div class="bg-purple-50 rounded-lg p-4 mb-4">
+                            <h4 class="font-bold text-purple-800 mb-2 flex items-center">
+                                <i class="fas fa-award mr-2"></i> 最新荣誉
+                            </h4>
+                            <p class="text-purple-900">FPS三角洲娱乐杯 <span class="font-bold text-lg">海选赛入围</span></p>
+                        </div>
+                        <p class="text-sm text-gray-500">以快速突破和灵活应变著称的新锐力量。</p>
+                    </div>
+                </div>
+
+                <!-- 源心·奇策 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border-t-4 border-amber-500">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">源心·奇策</h3>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-mobile-alt text-amber-400 mr-2"></i> 主攻游戏：<strong>《王者荣耀》</strong>
+                        </p>
+                        <div class="bg-amber-50 rounded-lg p-4 mb-4">
+                            <h4 class="font-bold text-amber-800 mb-2 flex items-center">
+                                <i class="fas fa-chart-line mr-2"></i> 赛事记录
+                            </h4>
+                            <p class="text-amber-900">累计参与非正规比赛 <span class="font-bold text-lg">20次</span>，荣获冠军 <span class="font-bold text-lg">4次</span></p>
+                            <p class="text-xs text-amber-700 mt-1">*非正规比赛指区域性邀请赛、表演赛等</p>
+                        </div>
+                        <p class="text-sm text-gray-500">团队策略与个人操作并重的移动电竞战队。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 明星选手 -->
+    <section id="players" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                <i class="fas fa-star text-yellow-500 mr-3"></i> 明星选手
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Evita -->
+                <div class="bg-gradient-to-b from-gray-100 to-white rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden">
+                        <img src="images/Evita.png"
+                             alt="源心电竞选手Evita的AI图像"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Evita</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">经验丰富的战术领袖，队伍的精神核心，具备大赛掌控力。</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-venus-mars mr-2 text-blue-400"></i> 性别：男
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500 mt-1">
+                                <i class="fas fa-user-tag mr-2 text-indigo-400"></i> 定位：队长 / 指挥
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forest -->
+                <div class="bg-gradient-to-b from-gray-100 to-white rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden">
+                        <img src="images/Forest.png"
+                             alt="源心电竞选手Forest的AI图像"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Forest</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">战术分析师型选手，擅长局势预判与资源调度，冷静睿智。</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-venus-mars mr-2 text-blue-400"></i> 性别：男
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500 mt-1">
+                                <i class="fas fa-brain mr-2 text-green-400"></i> 定位：战术指挥官
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lune -->
+                <div class="bg-gradient-to-b from-gray-100 to-white rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden">
+                        <img src="images/Lune.png"
+                           alt="源心电竞选手Lune的AI图像"
+                           class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Lune</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">节奏掌控者，擅长中后期团战决策，风格神秘优雅，极具心理优势。</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-venus-mars mr-2 text-pink-400"></i> 性别：女
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500 mt-1">
+                                <i class="fas fa-music mr-2 text-purple-400"></i> 定位：节奏大师
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tina -->
+                <div class="bg-gradient-to-b from-gray-100 to-white rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden">
+                        <img src="images/Tina.png"
+                             alt="源心电竞选手Tina的AI图像"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Tina</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">新生代爆发型选手，团队士气的带动者，充满活力与自信。</p>
+                        <div class="mt-auto">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fas fa-venus-mars mr-2 text-pink-400"></i> 性别：女
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500 mt-1">
+                                <i class="fas fa-bolt mr-2 text-yellow-400"></i> 定位：新生代之星
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 赛事与历程 -->
+    <section id="milestones" class="py-16 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <!-- 近期赛程 -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+                    <i class="fas fa-calendar-alt text-red-500 mr-3"></i> 近期赛程
+                </h2>
+                <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 text-center">
+                    <i class="fas fa-clock text-5xl text-gray-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">近期无公开赛事日程</h3>
+                    <p class="text-gray-600">
+                        战队目前正处于战术重组与新人磨合的关键阶段。我们正在积极备战，下一阶段的参赛计划将在确定后于官方渠道公布。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 发展里程碑 -->
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                    <i class="fas fa-road text-green-500 mr-3"></i> 发展历程
+                </h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="milestone-timeline">
+                        <!-- 里程碑条目 -->
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2023年初</div>
+                                <p>源心竞技正式注册成立，启动首批人才选拔。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2023年中</div>
+                                <p>组建首支《王者荣耀》试训队“源心·奇策”。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2023年末</div>
+                                <p>在区域非正规赛事中斩获首个冠军。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2024年Q1</div>
+                                <p>拓展FPS领域，组建《暗区突围》战队“源心·黎明”。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2024年Q2</div>
+                                <p>“源心·黎明”打入FPS暗区娱乐赛事前十名；再次拓展FPS领域，组建《三角洲行动》战队“源心·急袭”。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2024年至今</div>
+                                <p>累计参与各类非正规对抗赛达20场，取得4项冠军荣誉。“源心·急袭”打入FPS三角洲娱乐杯海选赛入围</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2025年</div>
+                                <p>启动选手招募计划，预备引入AI辅助训练系统。</p>
+                            </div>
+                        </div>
+                        <div class="milestone-timeline__item">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <div class="font-bold text-indigo-700 text-lg mb-1">2026年</div>
+                                <p>视觉品牌全面焕新，逐步启用新一代AI形象代言人体系。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 加入我们 -->
+    <section id="join" class="py-16 bg-gradient-to-r from-gray-900 to-slate-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                    <i class="fas fa-handshake mr-3 text-cyan-300"></i> 加入源心竞技
+                </h2>
+                <p class="text-xl text-center text-gray-300 mb-10 max-w-3xl mx-auto">
+                    我们正在寻找热爱电竞、渴望胜利的选手、教练、分析师及运营人才。如果你相信自己有能力与我们一同攀登巅峰，请与我们联系！
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-800 bg-opacity-50 rounded-2xl p-8 border border-cyan-800">
+                        <div class="text-center mb-6">
+                            <i class="fab fa-weixin text-5xl text-green-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">微信联系</h3>
+                            <p class="text-gray-300 mb-4">添加官方微信，备注“申请+职位”</p>
+                            <div class="bg-gray-900 text-cyan-300 font-mono text-2xl p-4 rounded-lg inline-block">
+                                YX_Czl
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 bg-opacity-50 rounded-2xl p-8 border border-purple-800">
+                        <div class="text-center mb-6">
+                            <i class="fab fa-qq text-5xl text-blue-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">QQ联系</h3>
+                            <p class="text-gray-300 mb-4">添加官方QQ，发送简历或作品集</p>
+                            <div class="bg-gray-900 text-blue-300 font-mono text-2xl p-4 rounded-lg inline-block">
+                                21920333
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center text-gray-400 text-sm">
+                    <p><i class="fas fa-info-circle mr-2"></i> 我们长期接收职业选手试训申请、青训营报名、内容创作合作及商务洽谈请求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-gamepad text-cyan-400"></i>
+                        <span class="text-white font-bold text-lg">源心竞技</span>
+                        <span class="text-xs">© 2023-2026</span>
+                    </div>
+                    <p class="mt-2">专注于多游戏领域的职业电竞品牌。</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-cyan-300"><i class="fab fa-weibo"></i></a>
+                    <a href="#" class="hover:text-cyan-300"><i class="fab fa-bilibili"></i></a>
+                    <a href="#" class="hover:text-cyan-300"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-700">
+            <div class="text-center">
+                <p class="text-xs italic text-gray-500">
+                    最终解释权为源心电竞所有。
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // 页面滚动时更新导航栏样式
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-opacity-95');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-opacity-95');
+            }
+        });
+    </script>
+</body>
+</html>
